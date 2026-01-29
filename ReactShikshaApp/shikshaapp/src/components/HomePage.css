@@ -1,0 +1,94 @@
+/* ---------------------- HOME CONTAINER ---------------------- */
+.home-container {
+  height: 70vh; /* shows large part of the image */
+  width: 100%;
+  background-size: cover; /* ensures image fills entire area */
+  background-position: center center; /* keeps focus on the middle */
+  background-repeat: no-repeat;
+  position: relative;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+/* ---------------------- OVERLAY CONTENT ---------------------- */
+.overlay-content {
+  text-align: center;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.4); /* slight transparency for readability */
+  padding: 40px 50px;
+  border-radius: 12px;
+}
+
+/* ---------------------- TITLE ---------------------- */
+.overlay-content h1 {
+  font-size: 30px;
+  font-weight: 500;
+  margin-bottom: 25px;
+  color: #fff;
+}
+
+/* ---------------------- SEARCH BAR ---------------------- */
+.search-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 580px;
+  width: 100%;
+  background: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.search-box input {
+  flex: 1;
+  padding: 12px 15px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #333;
+}
+
+.search-box button {
+  background-color: #4b7bec;
+  color: #fff;
+  padding: 14px 25px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.search-box button:hover {
+  background-color: #4b7bec;
+}
+
+/* ---------------------- RESPONSIVE ---------------------- */
+@media (max-width: 768px) {
+  .outside-logo {
+    width: 100px;
+    left: 20px;
+    top: 20px;
+  }
+
+  .overlay-content {
+    padding: 25px;
+  }
+
+  .overlay-content h1 {
+    font-size: 22px;
+  }
+
+  .search-box {
+    flex-direction: column;
+    width: 80%;
+  }
+
+  .search-box input,
+  .search-box button {
+    width: 100%;
+  }
+}

@@ -19,4 +19,12 @@ public interface ReviewService {
     ReviewDto updateReview(ReviewDto dto);
 
     void deleteReview(Long id);
+    
+    List<ReviewDto> searchReviews(
+            String userName,
+            Long collegeId,
+            Double rating,
+            String comment
+    );
+
 }

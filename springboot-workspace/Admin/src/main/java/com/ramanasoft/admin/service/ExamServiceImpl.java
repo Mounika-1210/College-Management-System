@@ -1,16 +1,18 @@
 package com.ramanasoft.admin.service;
 
-import com.ramanasoft.admin.dto.ExamDto;
-import com.ramanasoft.admin.model.Exam;
-import com.ramanasoft.admin.repository.ExamRepository;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ramanasoft.admin.dto.ExamDto;
+import com.ramanasoft.admin.model.Exam;
+import com.ramanasoft.admin.repository.ExamRepository;
+
 import jakarta.transaction.Transactional;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class ExamServiceImpl implements ExamService {
@@ -80,5 +82,22 @@ public class ExamServiceImpl implements ExamService {
         }
 
         repository.deleteById(id);
+    }
+    @Override
+    public List<ExamDto> searchExams(
+            String name,
+            String level,
+            LocalDate examDateAfter
+    ) {
+
+        List<Exam> exams = repository.searchExams(
+                name,
+                level,
+                examDateAfter
+        );
+
+        return exams.stream()
+                .map(exam -> modelMapper.map(exam, ExamDto.class))
+                .collect(Collectors.toList());
     }
 }

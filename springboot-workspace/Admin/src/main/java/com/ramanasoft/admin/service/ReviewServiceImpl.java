@@ -120,4 +120,22 @@ public class ReviewServiceImpl implements ReviewService {
                 review.getComment()
         );
     }
+    @Override
+    public List<ReviewDto> searchReviews(
+            String userName,
+            Long collegeId,
+            Double rating,
+            String comment
+    ) {
+
+        return reviewRepository.searchReviews(
+                userName,
+                collegeId,
+                rating,
+                comment
+        ).stream()
+         .map(this::mapToDto)
+         .collect(Collectors.toList());
+    }
+
 }

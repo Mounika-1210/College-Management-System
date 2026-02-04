@@ -7,7 +7,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Entity
@@ -19,20 +23,26 @@ public class Admission {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Admission ID is required")
     private String admissionId;
 
-    @NotBlank
+    @NotBlank(message = "Applicant name is required")
+    @Size(min = 3, max = 50)
     private String applicantName;
 
-    @NotBlank
-    private String role; // STUDENT / TEACHING / NON_TEACHING
+    @NotBlank(message = "Role is required")
+    @Pattern(regexp = "STUDENT|TEACHING|NON_TEACHING",
+             message = "Role must be STUDENT / TEACHING / NON_TEACHING")
+    private String role;
 
-    @NotBlank
+    @NotBlank(message = "Qualification is required")
     private String qualification;
 
-    @NotBlank
+    @Email(message = "Invalid email format")
+    @NotBlank(message = "Email is required")
     private String email;
 
+    @NotNull(message = "College is required")
     @ManyToOne
     @JoinColumn(name = "college_panel_id")
     private CollegePanel collegePanel;

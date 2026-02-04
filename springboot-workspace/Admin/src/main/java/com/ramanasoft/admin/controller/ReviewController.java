@@ -70,4 +70,20 @@ public class ReviewController {
         reviewService.deleteReview(id);
         return "Review deleted successfully";
     }
+ // 🔍 SEARCH REVIEWS
+    @GetMapping("/search")
+    public List<ReviewDto> searchReviews(
+            @RequestParam(required = false) String userName,
+            @RequestParam(required = false) Long collegeId,
+            @RequestParam(required = false)  Double rating,
+            @RequestParam(required = false) String comment
+    ) {
+        return reviewService.searchReviews(
+                userName,
+                collegeId,
+                rating,
+                comment
+        );
+    }
+
 }

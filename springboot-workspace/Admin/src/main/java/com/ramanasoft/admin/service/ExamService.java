@@ -1,10 +1,9 @@
 package com.ramanasoft.admin.service;
 
-
+import java.time.LocalDate;
+import java.util.List;
 
 import com.ramanasoft.admin.dto.ExamDto;
-
-import java.util.List;
 
 public interface ExamService {
 
@@ -17,4 +16,10 @@ public interface ExamService {
     ExamDto updateExam(Long id, ExamDto dto);
 
     void deleteExam(Long id);
+    
+    List<ExamDto> searchExams(
+            String name,
+            String level,
+            LocalDate examDateAfter
+    );
 }
